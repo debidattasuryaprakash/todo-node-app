@@ -1,0 +1,50 @@
+const express = require("express")
+const mongoose = require('mongoose')
+
+const app = express()
+
+//connection to mongodb
+mongoose.connect("mongodb+srv://debidatta:csrlSuper23@cluster0.iad3y.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+//middlewares
+app.use(express.urlencoded({extended: true}));
+app.use(express.static("public"));
+app.set("view engine", "ejs");
+
+
+//routes
+app.use(require("./routes/index"))
+app.use(require("./routes/todo"))
+
+
+app.listen(3000, () => console.log("Server started listening on port 3000"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
